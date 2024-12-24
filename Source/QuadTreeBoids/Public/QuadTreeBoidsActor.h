@@ -52,7 +52,7 @@ public:
 	FVector2D CalculateWallAvoidanceForce(const FVector2D& position, const FRectAngle& boundary, float maxForce);
 
 private:
-	QuadTree* MyQuadTree;
+	QuadTree* MyQuadTree = nullptr;
 	TArray<FPoint> Boids;
 
 };
