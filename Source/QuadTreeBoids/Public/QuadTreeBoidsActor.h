@@ -8,15 +8,6 @@
 #include "QuadTreeBoidsActor.generated.h"
 
 /**
- * ボイド用データ
- */
-struct FBoidData
-{
-	FVector2D Velocity = FVector2D(0);
-	FVector2D Accel = FVector2D(0);
-};
-
-/**
  * 四分木を使用したボイドシミュレーション
  */
 UCLASS()
@@ -26,7 +17,7 @@ class QUADTREEBOIDS_API AQuadTreeBoidsActor : public AActor
 	
 public:
 	UPROPERTY(EditAnywhere, Category = "Control")
-	int NumBoids = 100;
+	int NumBoids = 1000;
 
 	UPROPERTY(EditAnywhere, Category = "Control")
 	float SeparationWeight = 0.5f;

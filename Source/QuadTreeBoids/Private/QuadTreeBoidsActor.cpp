@@ -185,21 +185,23 @@ FVector2D AQuadTreeBoidsActor::CalculateWallAvoidanceForce(const FVector2D& posi
 	float distanceToTop = (boundary.Center.Y + boundary.Height) - position.Y;
 	float distanceToBottom = position.Y - (boundary.Center.Y - boundary.Height);
 
-	if (distanceToLeft < 10.0f)
+	float avoidanceDistance = 10.0f;
+
+	if (distanceToLeft < avoidanceDistance)
 	{
-		force.X += maxForce * (10.0f - distanceToLeft) / 10.0f;
+		force.X += maxForce * (avoidanceDistance - distanceToLeft) / avoidanceDistance;
 	}
-	if (distanceToRight < 10.0f)
+	if (distanceToRight < avoidanceDistance)
 	{
-		force.X -= maxForce * (10.0f - distanceToRight) / 10.0f;
+		force.X -= maxForce * (avoidanceDistance - distanceToRight) / avoidanceDistance;
 	}
-	if (distanceToTop < 10.0f)
+	if (distanceToTop < avoidanceDistance)
 	{
-		force.Y -= maxForce * (10.0f - distanceToTop) / 10.0f;
+		force.Y -= maxForce * (avoidanceDistance - distanceToTop) / avoidanceDistance;
 	}
-	if (distanceToBottom < 10.0f)
+	if (distanceToBottom < avoidanceDistance)
 	{
-		force.Y += maxForce * (10.0f - distanceToBottom) / 10.0f;
+		force.Y += maxForce * (avoidanceDistance - distanceToBottom) / avoidanceDistance;
 	}
 
 	return force;
